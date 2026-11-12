@@ -1,0 +1,764 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Scaccomatto – chess, with personality</title>
+<meta name="description" content="Scaccomatto is a chess game for Windows and Linux by Alekhine Studios, with online play, Game Review, achievements and optional cloud saves. Seven variants, four bots with stories of their own, and a proper analysis board.">
+<link rel="icon" href="img/icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<nav class="topbar" id="topbar">
+  <a class="brand" href="index.html"><img src="img/icon.png" alt="" width="36" height="36"><span class="brand-text">Scaccomatto</span></a>
+  <ul class="topbar-links">
+    <li><a href="#variants">Features</a></li>
+    <li><a href="#bots">Bots</a></li>
+    <li><a href="#install">Install</a></li>
+    <li><a href="#questions">FAQ</a></li>
+    <li><a href="credits.html">Credits</a></li>
+    <li><a href="https://github.com/Curious3dofficial/scaccomatto-full/releases">All versions &#8599;</a></li>
+  </ul>
+  <div class="topbar-actions">
+    <div class="topbar-search-slot">
+      <div class="topbar-search" id="topbarSearch">
+        <button type="button" class="topbar-search-btn" id="topbarSearchBtn" aria-label="Search this page">
+          <svg viewBox="0 0 24 24" fill="none"><circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="1.8"/><path d="M21 21L16.65 16.65" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+        </button>
+        <input type="text" class="topbar-search-input" id="topbarSearchInput" placeholder="Search...">
+        <span class="topbar-search-caret" id="topbarSearchCaret"></span>
+      </div>
+    </div>
+    <a class="topbar-icon-btn" href="mailto:alekhinestudios@gmail.com" aria-label="Email Alekhine Studios">
+      <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="4" stroke="currentColor" stroke-width="1.8"/><path d="M4 20c0-4.4 3.6-7 8-7s8 2.6 8 7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+    </a>
+    <div class="topbar-hamburger" aria-hidden="true"><span></span><span></span><span></span></div>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="lid">
+    <img class="lid-wordmark" src="img/wordmark.png" alt="Scaccomatto" width="1100" height="300">
+    <span class="wordmark-thud" aria-hidden="true"></span>
+    <figure class="lid-art">
+      <div class="lid-art-viewport" id="lidArtViewport">
+        <div class="lid-art-track" id="lidArtTrack">
+          <img src="img/spectate.jpg" alt="Picking two bots to watch in Spectate" data-clone="true" aria-hidden="true" tabindex="-1">
+          <img src="img/spectategame.jpg" alt="Margot and Dex, two of the bots, halfway through a Semi-Slav Defense">
+          <img src="img/analysis.jpg" alt="The Analysis board showing the engine's best lines">
+          <img src="img/spectate.jpg" alt="Picking two bots to watch in Spectate">
+          <img src="img/spectategame.jpg" alt="Margot and Dex, two of the bots, halfway through a Semi-Slav Defense" data-clone="true" aria-hidden="true" tabindex="-1">
+        </div>
+      </div>
+    </figure>
+    <div class="lid-caption-wrap" id="lidCaptionWrap">
+      <p class="lid-caption" id="lidCaption">Margot and Dex, deep in a Semi-Slav. Dex just almost blundered.</p>
+    </div>
+  </div>
+
+  <div class="hero-text">
+    <h1 class="outlined">Chess, with personality.</h1>
+    <p class="lead">The full Scaccomatto: online play with friends, Game Review that grades every move, achievements, and an optional account that carries your saves between computers. One payment, yours for good.</p>
+
+    <!-- These two don't go anywhere real yet - swap in your actual Gumroad/itch.io/etc.
+         purchase links once payment is set up. They're left as plain anchors on purpose
+         so nothing 404s in the meantime. -->
+    <div class="downloads">
+      <a class="btn btn-gold" id="dl-windows" href="#buy-windows">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 5.5 10.5 4.4v7.1H3zM11.5 4.3 21 3v8.5h-9.5zM3 12.5h7.5v7.1L3 18.5zM11.5 12.5H21V21l-9.5-1.3z"/></svg>
+        <span><strong>Get it for Windows</strong><small id="dl-windows-note">Windows 10 and 11</small></span>
+      </a>
+      <a class="btn btn-white" id="dl-linux" href="#buy-linux">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2c-2.2 0-3.6 1.9-3.6 4.6 0 1.5.3 2.4-.6 3.9C6.6 12.2 5 14 5 16.4c0 .8.2 1.5.6 2.1-.9.5-1.6 1.2-1.6 2 0 1.1 1.5 1.5 3.4 1.5 1.2 0 2.2-.4 2.8-1 .5.1 1.1.2 1.8.2s1.3-.1 1.8-.2c.6.6 1.6 1 2.8 1 1.9 0 3.4-.4 3.4-1.5 0-.8-.7-1.5-1.6-2 .4-.6.6-1.3.6-2.1 0-2.4-1.6-4.2-2.8-5.9-.9-1.5-.6-2.4-.6-3.9C15.6 3.9 14.2 2 12 2zm-1.5 4.2c.4 0 .7.5.7 1.1s-.3 1.1-.7 1.1-.7-.5-.7-1.1.3-1.1.7-1.1zm3 0c.4 0 .7.5.7 1.1s-.3 1.1-.7 1.1-.7-.5-.7-1.1.3-1.1.7-1.1z"/></svg>
+        <span><strong>Get it for Linux</strong><small id="dl-linux-note">.deb for Ubuntu, Mint and Debian</small></span>
+      </a>
+    </div>
+    <p class="fineprint">This is <span id="version">Scaccomatto 1.1.0</span>. Java comes built in, so there's nothing else to install. Stuck? <a href="#install">Here's how to install it.</a></p>
+  </div>
+</header>
+
+<main>
+
+  <section class="variants" aria-labelledby="variants-title">
+    <div class="section-head">
+      <h2 class="outlined" id="variants-title">Seven ways to play</h2>
+    </div>
+    <ul class="variant-grid">
+      <li><img src="img/variants/classic.jpg" alt="" width="73" height="73"><h3>Classic</h3><p>The game you already know.</p></li>
+      <li><img src="img/variants/chess960.jpg" alt="" width="73" height="73"><h3>Chess960</h3><p>The back row gets shuffled before you start.</p></li>
+      <li><img src="img/variants/king-of-the-hill.jpg" alt="" width="73" height="73"><h3>King of the Hill</h3><p>Walk your king into the middle and you win.</p></li>
+      <li><img src="img/variants/three-check.jpg" alt="" width="73" height="73"><h3>Three-check</h3><p>Check the other king three times and it's over.</p></li>
+      <li><img src="img/variants/atomic.jpg" alt="" width="73" height="73"><h3>Atomic</h3><p>Captures explode and take the nearby pieces with them.</p></li>
+      <li><img src="img/variants/fog-of-war.jpg" alt="" width="73" height="73"><h3>Fog of War</h3><p>You only see the squares your own pieces can reach.</p></li>
+      <li><img src="img/variants/duck-chess.jpg" alt="" width="73" height="73"><h3>Duck Chess</h3><p>Make your move, then put the duck somewhere annoying.</p></li>
+      <li class="ghost"><img src="img/variants/spell-chess.jpg" alt="" width="73" height="73"><h3>Spell Chess <span class="badge">Soon</span></h3><p>Cast spells and see what happens. Still being made.</p></li>
+    </ul>
+  </section>
+
+  <section class="bots" aria-labelledby="bots-title">
+    <div class="section-head">
+      <h2 class="outlined" id="bots-title">Meet the bots</h2>
+    </div>
+    <ul class="bot-row">
+      <li class="bot"><img src="img/bots/gary.jpg" alt="Gary" width="86" height="86"><h3>Gary</h3><span class="elo">Elo 300</span></li>
+      <li class="bot"><img src="img/bots/theo.jpg" alt="Theo" width="86" height="86"><h3>Theo</h3><span class="elo">Elo 900</span></li>
+      <li class="bot"><img src="img/bots/dex.jpg" alt="Dex" width="86" height="86"><h3>Dex</h3><span class="elo">Elo 1500</span></li>
+      <li class="bot"><img src="img/bots/margot.jpg" alt="Margot" width="86" height="86"><h3>Margot</h3><span class="elo">Elo 2200</span></li>
+    </ul>
+    <blockquote class="story">
+      <p>Theo watched forty hours of chess videos last month and now plays the London against everything, including people who asked him not to.</p>
+      <footer>Every bot comes with a story. That one's Theo's.</footer>
+    </blockquote>
+  </section>
+
+  <section class="duo">
+    <article>
+      <img class="zoomable" src="img/spectate.jpg" alt="Picking Gary and Theo to watch in Spectate" width="1280" height="720" loading="lazy" tabindex="0" role="button" aria-label="Open larger view of: Picking Gary and Theo to watch in Spectate">
+      <h2>Or just watch</h2>
+      <p>Pick any two bots and let them play each other. It's a nice way to see how a stronger player handles a position, and it's very satisfying watching Gary lose to everyone.</p>
+    </article>
+    <article>
+      <img class="zoomable" src="img/analysis.jpg" alt="The Analysis board showing the engine's best lines" width="1280" height="720" loading="lazy" tabindex="0" role="button" aria-label="Open larger view of: The Analysis board showing the engine's best lines">
+      <h2>A proper analysis board</h2>
+      <p>Set up a position or paste in a game, and Argus, the engine we wrote from scratch for Scaccomatto, shows you the best moves and who's ahead. You can explore openings, build your own repertoire and drill it until it sticks.</p>
+    </article>
+  </section>
+
+  <p class="extras">If you'd like a nudge during a game, you can switch on the evaluation bar or ask for a hint. You can also pick between three piece sets, change the board colours, and play in light or dark mode.</p>
+
+  <section class="online" id="online" aria-labelledby="online-title">
+    <div class="section-head">
+      <h2 class="outlined" id="online-title">Play anyone, anywhere</h2>
+      <p>Send a friend a join code, let matchmaking find you someone, or just see who's online.</p>
+    </div>
+    <div class="bento">
+      <figure class="bento-tile bento-shot">
+        <img src="img/multiplayer.jpg" alt="Scaccomatto's online play screen, mid-match against another player" loading="lazy">
+      </figure>
+      <div class="bento-tile bento-friends">
+        <h3>Friends</h3>
+        <ul class="friend-list" id="friendList">
+          <li><span class="dot" data-state="online" aria-hidden="true"></span>Theo</li>
+          <li><span class="dot" data-state="away" aria-hidden="true"></span>Margot</li>
+          <li><span class="dot" data-state="offline" aria-hidden="true"></span>Gary</li>
+        </ul>
+      </div>
+      <div class="bento-tile bento-code">
+        <h3>Join code</h3>
+        <p class="code-reel" id="codeReel">XQ7K2P</p>
+        <p class="code-sub">Share it, they type it in, you're playing.</p>
+      </div>
+      <div class="bento-tile bento-chat">
+        <h3>Chat</h3>
+        <div class="chat-bubbles" aria-hidden="true">
+          <p class="bubble them">gg, that was close</p>
+          <p class="bubble me">rematch?</p>
+          <p class="bubble typing" aria-hidden="true"><span></span><span></span><span></span></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="review" id="review" aria-label="Every move, graded">
+    <div class="review-layout">
+      <div class="review-text">
+        <div class="review-orbit">
+          <div class="review-circle" aria-hidden="true"></div>
+          <div class="orbit-ring" style="--count:11" aria-hidden="true">
+            <div class="orbit-item" style="left: calc(50% + (0.0) * var(--orbit-radius, 190px)); top: calc(50% + (-1.0) * var(--orbit-radius, 190px));">
+              <img class="orbit-icon" src="assets/movelogos/book.svg" alt="Book" width="40" height="40">
+            </div>
+            <div class="orbit-item" style="left: calc(50% + (0.5406) * var(--orbit-radius, 190px)); top: calc(50% + (-0.8413) * var(--orbit-radius, 190px));">
+              <img class="orbit-icon" src="assets/movelogos/forced.svg" alt="Forced" width="40" height="40">
+            </div>
+            <div class="orbit-item" style="left: calc(50% + (0.9096) * var(--orbit-radius, 190px)); top: calc(50% + (-0.4154) * var(--orbit-radius, 190px));">
+              <img class="orbit-icon" src="assets/movelogos/miss.svg" alt="Miss" width="40" height="40">
+            </div>
+            <div class="orbit-item" style="left: calc(50% + (0.9898) * var(--orbit-radius, 190px)); top: calc(50% + (0.1423) * var(--orbit-radius, 190px));">
+              <img class="orbit-icon" src="assets/movelogos/blunder.svg" alt="Blunder" width="40" height="40">
+            </div>
+            <div class="orbit-item" style="left: calc(50% + (0.7557) * var(--orbit-radius, 190px)); top: calc(50% + (0.6549) * var(--orbit-radius, 190px));">
+              <img class="orbit-icon" src="assets/movelogos/mistake.svg" alt="Mistake" width="40" height="40">
+            </div>
+            <div class="orbit-item" style="left: calc(50% + (0.2817) * var(--orbit-radius, 190px)); top: calc(50% + (0.9595) * var(--orbit-radius, 190px));">
+              <img class="orbit-icon" src="assets/movelogos/inaccuracy.svg" alt="Inaccuracy" width="40" height="40">
+            </div>
+            <div class="orbit-item" style="left: calc(50% + (-0.2817) * var(--orbit-radius, 190px)); top: calc(50% + (0.9595) * var(--orbit-radius, 190px));">
+              <img class="orbit-icon" src="assets/movelogos/excellent.svg" alt="Good" width="40" height="40">
+            </div>
+            <div class="orbit-item" style="left: calc(50% + (-0.7557) * var(--orbit-radius, 190px)); top: calc(50% + (0.6549) * var(--orbit-radius, 190px));">
+              <img class="orbit-icon" src="assets/movelogos/excellent.svg" alt="Excellent" width="40" height="40">
+            </div>
+            <div class="orbit-item" style="left: calc(50% + (-0.9898) * var(--orbit-radius, 190px)); top: calc(50% + (0.1423) * var(--orbit-radius, 190px));">
+              <img class="orbit-icon" src="assets/movelogos/best.svg" alt="Best" width="40" height="40">
+            </div>
+            <div class="orbit-item" style="left: calc(50% + (-0.9096) * var(--orbit-radius, 190px)); top: calc(50% + (-0.4154) * var(--orbit-radius, 190px));">
+              <img class="orbit-icon" src="assets/movelogos/great.svg" alt="Great" width="40" height="40">
+            </div>
+            <div class="orbit-item" style="left: calc(50% + (-0.5406) * var(--orbit-radius, 190px)); top: calc(50% + (-0.8413) * var(--orbit-radius, 190px));">
+              <img class="orbit-icon" src="assets/movelogos/brilliant.svg" alt="Brilliant" width="40" height="40">
+            </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <img class="zoomable" src="img/review.jpg" alt="Scaccomatto's Game Review screen, grading a finished game move by move" width="1280" height="720" loading="lazy" tabindex="0" role="button" aria-label="Open larger view of: Game Review">
+    </div>
+  </section>
+
+  <section class="accounts" id="accounts" aria-labelledby="accounts-title">
+    <div class="section-head">
+      <h2 class="outlined" id="accounts-title">One account, every computer</h2>
+      <p>Signing in is optional. Do it, and your saves, rating and achievements follow you. Skip it and everything just stays on this one machine.</p>
+    </div>
+    <div class="sync-visual" aria-hidden="true">
+      <div class="sync-device sync-device-a"><span></span></div>
+      <div class="sync-dot"></div>
+      <div class="sync-device sync-device-b"><span></span></div>
+    </div>
+  </section>
+
+  <section class="achievements" id="achievements" aria-labelledby="achievements-title">
+    <div class="section-head">
+      <h2 class="outlined" id="achievements-title">Achievements</h2>
+      <p>Across games, Game Review, and the variants - with a toast the moment you earn one.</p>
+    </div>
+    <img class="zoomable achievements-shot" src="img/achievements.jpg" alt="The achievements screen, showing unlocked and locked achievements" width="1280" height="720" loading="lazy" tabindex="0" role="button" aria-label="Open larger view of: Achievements">
+    <div class="badge-marquee">
+      <div class="badge-track" id="badgeTrack">
+        <div class="ach-badge" data-cat="games"><span class="ach-badge-icon" aria-hidden="true">&#127942;</span><strong>First Blood</strong><small>Win your first game</small></div>
+        <div class="ach-badge" data-cat="review"><span class="ach-badge-icon" aria-hidden="true">&#128161;</span><strong>Flawless</strong><small>100% accuracy in Game Review</small></div>
+        <div class="ach-badge" data-cat="games"><span class="ach-badge-icon" aria-hidden="true">&#8635;</span><strong>Comeback Kid</strong><small>Win from a losing position</small></div>
+        <div class="ach-badge" data-cat="variants"><span class="ach-badge-icon" aria-hidden="true">&#129410;</span><strong>Duck Hunt</strong><small>Win a game of Duck Chess</small></div>
+        <div class="ach-badge" data-cat="review"><span class="ach-badge-icon" aria-hidden="true">&#128214;</span><strong>Opening Book</strong><small>Stay in book for 15 moves</small></div>
+        <div class="ach-badge" data-cat="variants"><span class="ach-badge-icon" aria-hidden="true">&#127769;</span><strong>Night Owl</strong><small>Win a game of Fog of War</small></div>
+        <div class="ach-badge" data-cat="games"><span class="ach-badge-icon" aria-hidden="true">&#9878;</span><strong>Rivalry</strong><small>Beat the same friend five times</small></div>
+        <div class="ach-badge" data-cat="games"><span class="ach-badge-icon" aria-hidden="true">&#127942;</span><strong>First Blood</strong><small>Win your first game</small></div>
+        <div class="ach-badge" data-cat="review"><span class="ach-badge-icon" aria-hidden="true">&#128161;</span><strong>Flawless</strong><small>100% accuracy in Game Review</small></div>
+        <div class="ach-badge" data-cat="games"><span class="ach-badge-icon" aria-hidden="true">&#8635;</span><strong>Comeback Kid</strong><small>Win from a losing position</small></div>
+        <div class="ach-badge" data-cat="variants"><span class="ach-badge-icon" aria-hidden="true">&#129410;</span><strong>Duck Hunt</strong><small>Win a game of Duck Chess</small></div>
+        <div class="ach-badge" data-cat="review"><span class="ach-badge-icon" aria-hidden="true">&#128214;</span><strong>Opening Book</strong><small>Stay in book for 15 moves</small></div>
+        <div class="ach-badge" data-cat="variants"><span class="ach-badge-icon" aria-hidden="true">&#127769;</span><strong>Night Owl</strong><small>Win a game of Fog of War</small></div>
+        <div class="ach-badge" data-cat="games"><span class="ach-badge-icon" aria-hidden="true">&#9878;</span><strong>Rivalry</strong><small>Beat the same friend five times</small></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="install" id="install" aria-labelledby="install-title">
+    <h2 class="outlined" id="install-title">Getting it running</h2>
+    <div class="install-cols">
+      <div class="panel">
+        <h3>Windows</h3>
+        <ol>
+          <li>Open the <code>Scaccomatto-Setup</code> file you downloaded and follow the steps.</li>
+          <li>If a blue box says <em>“Windows protected your PC”</em>, click <strong>More info</strong>, then <strong>Run anyway</strong>. It shows up because the game is new and the installer isn't signed with a paid certificate.</li>
+          <li>Open Scaccomatto from the Start menu or your desktop.</li>
+        </ol>
+        <p class="note">Updating? If the installer asks you to change, repair or remove, remove the old version first, then run it again.</p>
+      </div>
+      <div class="panel">
+        <h3>Linux</h3>
+        <ol>
+          <li>Download the <code>.deb</code> file.</li>
+          <li>Open a terminal in the folder you saved it to and run this:
+            <span class="cmd"><code id="linux-cmd">sudo apt install ./scaccomatto_<span class="ver">1.1.0</span>_amd64.deb</code><button type="button" class="copy" data-copy="linux-cmd">Copy</button></span>
+          </li>
+          <li>Open Scaccomatto from your app menu.</li>
+        </ol>
+        <p class="note">To remove it later: <code>sudo apt remove scaccomatto</code></p>
+      </div>
+    </div>
+  </section>
+
+  <section class="faq" id="questions" aria-labelledby="faq-title">
+    <h2 class="outlined" id="faq-title">Questions</h2>
+    <details>
+      <summary>Is this a one-time purchase?</summary>
+      <p>Yes. You pay once and it's yours - no subscription, no in-app purchases, no ads.</p>
+    </details>
+    <details>
+      <summary>Can I play people over the internet?</summary>
+      <p>Yes. Send a friend a join code, or let matchmaking find you someone. You can add friends, see who's online, and challenge them directly too.</p>
+    </details>
+    <details>
+      <summary>Do I need an account?</summary>
+      <p>No - it's optional. Sign in and your saves, rating and achievements follow you between computers. Skip it and everything just stays on the one machine you're playing on.</p>
+    </details>
+    <details>
+      <summary>What about Mac?</summary>
+      <p>Not yet. Windows and Linux come first.</p>
+    </details>
+    <details>
+      <summary>What does it send anywhere?</summary>
+      <p>Nothing, unless you sign in - then only what an account needs (your saves, rating and achievements) goes anywhere, and only to sync them for you. Everything else stays on your computer. The <a href="privacy.html">privacy page</a> has the details.</p>
+    </details>
+    <details>
+      <summary>Something broke. Where do I tell you?</summary>
+      <p>Email <a href="mailto:alekhinestudios@gmail.com">alekhinestudios@gmail.com</a>. If the game saved a problem report (Settings, then About, then Problem reports), attaching it helps a lot.</p>
+    </details>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <img src="img/wordmark.png" alt="Scaccomatto" width="1100" height="300" loading="lazy">
+  <p>Made by Alekhine Studios. Found a bug, or just want to say hi? Write to <a href="mailto:alekhinestudios@gmail.com">alekhinestudios@gmail.com</a>.</p>
+  <p class="footer-links"><a href="privacy.html">Privacy</a><a href="credits.html">Credits</a><a href="https://github.com/Curious3dofficial/scaccomatto-full/releases">All versions</a></p>
+  <p class="copy-line">© 2026 Alekhine Studios</p>
+</footer>
+
+<!-- Fullscreen preview for the "Or just watch" / "A proper analysis board"
+     screenshots. One shared overlay, filled in with whichever image was
+     clicked. -->
+<div class="lightbox" id="lightbox">
+  <img src="" alt="" id="lightbox-img">
+</div>
+
+<script>
+// The GitHub repository the version number and install instructions come
+// from. Change this one line if the repo moves.
+const REPO = "Curious3dofficial/scaccomatto-full";
+
+(function () {
+  // Ask GitHub for the newest proper release, just to show the current
+  // version number and file sizes - NOT to point the buy buttons at it.
+  // This isn't a free download, so (unlike the free site) a found release
+  // never overwrites dl-windows/dl-linux's href.
+  fetch("https://api.github.com/repos/" + REPO + "/releases/latest")
+    .then(r => r.ok ? r.json() : null)
+    .then(rel => {
+      if (!rel || !rel.assets) return;
+      const exe = rel.assets.find(a => /\.exe$/i.test(a.name));
+      const deb = rel.assets.find(a => /\.deb$/i.test(a.name));
+      const size = a => a ? ", " + Math.round(a.size / 1048576) + " MB" : "";
+      if (exe) document.getElementById("dl-windows-note").textContent = "Windows 10 and 11" + size(exe);
+      if (deb) document.getElementById("dl-linux-note").textContent = ".deb for Ubuntu, Mint and Debian" + size(deb);
+      if (rel.tag_name) {
+        const v = rel.tag_name.replace(/^v/, "");
+        document.getElementById("version").textContent = "Scaccomatto " + v;
+        document.querySelectorAll(".ver").forEach(el => el.textContent = v);
+      }
+    })
+    .catch(() => {});
+
+  // Rotating sequence of screenshots inside the lid-art box. Same
+  // "rotation motion" as a slide-track carousel: a clone of the last
+  // slide sits before the first, and a clone of the first sits after
+  // the last, so it can always just keep sliding forward and never
+  // needs to visibly snap backwards to loop. Movement is driven by
+  // requestAnimationFrame with a cubic ease-out, not a CSS transition,
+  // so a frame can be dropped without the animation jumping.
+  (function () {
+    const track = document.getElementById("lidArtTrack");
+    if (!track) return;
+    const realSlides = 3; // spectategame.jpg, analysis.jpg, spectate.jpg
+    const totalSlides = realSlides + 2; // plus one clone on each end
+    const slideWidthPct = 100 / totalSlides;
+
+    function lidArtEase(t) {
+      return 1 - Math.pow(1 - t, 3);
+    }
+
+    let currentPhysical = 1; // start on the first real slide
+    let currentPct = -currentPhysical * slideWidthPct;
+    let animFrame = null;
+
+    function physicalToReal(physical) {
+      if (physical === 0) return realSlides - 1;
+      if (physical === totalSlides - 1) return 0;
+      return physical - 1;
+    }
+
+    // One caption per real slide, in the same order as the slides above.
+    const captionTexts = [
+      "Margot and Dex, deep in a Semi-Slav. Dex just almost blundered.",
+      "Argus walks through the best lines, move by move.",
+      "Picking who to watch next in Spectate."
+    ];
+    const captionEl = document.getElementById("lidCaption");
+
+    function updateCaption(realIndex) {
+      const text = captionTexts[realIndex];
+      if (!captionEl || captionEl.textContent === text) return;
+
+      // A ghost copy of the old text drifts up, blurs and fades out in place.
+      const ghost = captionEl.cloneNode(true);
+      ghost.removeAttribute("id");
+      ghost.setAttribute("aria-hidden", "true");
+      captionEl.parentNode.appendChild(ghost);
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => ghost.classList.add("is-leaving"));
+      });
+      ghost.addEventListener("transitionend", () => ghost.remove(), { once: true });
+      setTimeout(() => ghost.remove(), 700);
+
+      // The new text swaps in instantly below its resting spot, then
+      // transitions up into place - no blur on the way in.
+      captionEl.textContent = text;
+      captionEl.style.transition = "none";
+      captionEl.classList.add("is-entering");
+      captionEl.getBoundingClientRect(); // force the start state to apply
+      captionEl.style.transition = "";
+      // Two frames, not one: the browser needs to actually paint the
+      // "just below, invisible" start state before the class comes off,
+      // otherwise it can skip straight to the end state with no transition.
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => captionEl.classList.remove("is-entering"));
+      });
+    }
+
+    function setTrackPct(pct) {
+      currentPct = pct;
+      track.style.transform = `translateX(${pct}%)`;
+    }
+    setTrackPct(currentPct);
+
+    function animateTrackTo(targetPct, duration, onComplete) {
+      if (animFrame) cancelAnimationFrame(animFrame);
+      const startPct = currentPct;
+      const delta = targetPct - startPct;
+      const startTime = performance.now();
+      function step(now) {
+        const t = Math.min(1, (now - startTime) / duration);
+        setTrackPct(startPct + delta * lidArtEase(t));
+        if (t < 1) {
+          animFrame = requestAnimationFrame(step);
+        } else {
+          animFrame = null;
+          if (onComplete) onComplete();
+        }
+      }
+      animFrame = requestAnimationFrame(step);
+    }
+
+    function advance() {
+      const nextPhysical = currentPhysical + 1;
+      updateCaption(physicalToReal(nextPhysical));
+      animateTrackTo(-nextPhysical * slideWidthPct, 2100, () => {
+        if (nextPhysical === totalSlides - 1) {
+          // Landed on the trailing clone; it looks identical to the
+          // first real slide, so snap straight back to that - no
+          // animation, nothing for the eye to catch.
+          currentPhysical = 1;
+          track.style.transition = "none";
+          setTrackPct(-currentPhysical * slideWidthPct);
+          track.getBoundingClientRect(); // force the snap to apply before re-enabling motion
+          track.style.transition = "";
+        } else {
+          currentPhysical = nextPhysical;
+        }
+      });
+    }
+
+    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (reduceMotion) return; // leave it sitting on the first slide, no autoplay
+
+    let autoplay = setInterval(advance, 6000);
+
+    // No sense spending frames animating a box that's scrolled off
+    // screen - pause while it's out of view, resume when it's back.
+    const art = document.getElementById("lidArtViewport");
+    if (art && "IntersectionObserver" in window) {
+      new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            if (!autoplay) autoplay = setInterval(advance, 6000);
+          } else if (autoplay) {
+            clearInterval(autoplay);
+            autoplay = null;
+          }
+        });
+      }, { threshold: 0.1 }).observe(art);
+    }
+  })();
+
+  // Top bar: transparent over the hero, gaining a glassy backing as you
+  // scroll down through it (tracked exactly to scroll position, not
+  // animated), then behaving like a taskbar once you're past the hero -
+  // hides on scroll down, reveals on scroll up, and always reveals if
+  // the mouse comes up near the very top edge of the window.
+  const topbar = document.getElementById("topbar");
+  const hero = document.querySelector(".hero");
+  let lastScrollY = window.scrollY;
+
+  // Search icon toggles an input that expands leftward. Only the icon
+  // click opens or closes it - no auto-close on blur or outside click,
+  // so once it's open it stays open until clicked again.
+  const topbarSearch = document.getElementById("topbarSearch");
+  const topbarSearchBtn = document.getElementById("topbarSearchBtn");
+  const topbarSearchInput = document.getElementById("topbarSearchInput");
+  const topbarSearchCaret = document.getElementById("topbarSearchCaret");
+
+  function syncTopbarCaret() {
+    if (!topbarSearchInput || !topbarSearchCaret) return;
+    const show = document.activeElement === topbarSearchInput && topbarSearchInput.value.length === 0;
+    topbarSearchCaret.classList.toggle("is-blinking", show);
+    topbarSearchCaret.style.opacity = show ? "" : "0";
+  }
+  function openTopbarSearch() {
+    if (!topbarSearch || !topbarSearchInput) return;
+    topbarSearch.classList.add("is-open");
+    topbarSearchInput.disabled = false;
+    topbarSearchInput.focus();
+  }
+  function closeTopbarSearch() {
+    if (!topbarSearch || !topbarSearchInput) return;
+    topbarSearch.classList.remove("is-open");
+    topbarSearchInput.blur();
+    topbarSearchInput.value = "";
+    topbarSearchInput.disabled = true;
+    syncTopbarCaret();
+  }
+  if (topbarSearch && topbarSearchBtn && topbarSearchInput) {
+    topbarSearchInput.disabled = true; // can't be focused or typed into until opened
+    topbarSearchBtn.addEventListener("click", () => {
+      if (topbarSearch.classList.contains("is-open")) closeTopbarSearch();
+      else openTopbarSearch();
+    });
+    topbarSearchInput.addEventListener("focus", syncTopbarCaret);
+    topbarSearchInput.addEventListener("blur", syncTopbarCaret);
+    topbarSearchInput.addEventListener("input", syncTopbarCaret);
+  }
+
+  function updateTopbar() {
+    const y = window.scrollY;
+    const heroBottom = hero ? hero.offsetTop + hero.offsetHeight : 0;
+    const glassProgress = heroBottom > 0 ? Math.min(1, Math.max(0, y / heroBottom)) : 1;
+    topbar.style.setProperty("--topbar-glass-opacity", glassProgress);
+
+    if (y > heroBottom) {
+      if (y > lastScrollY) {
+        topbar.classList.add("is-hidden");
+        // The search box lives inside the bar - once the bar itself is
+        // off-screen there's no reason for it to stay expanded.
+        closeTopbarSearch();
+      } else {
+        topbar.classList.remove("is-hidden");
+      }
+    } else {
+      topbar.classList.remove("is-hidden");
+    }
+    lastScrollY = y;
+  }
+  updateTopbar();
+  window.addEventListener("scroll", updateTopbar, { passive: true });
+
+  document.addEventListener("mousemove", e => {
+    if (e.clientY < 32) topbar.classList.remove("is-hidden");
+  });
+
+  // Tabbing into one of its links should reveal it too.
+  topbar.addEventListener("focusin", () => topbar.classList.remove("is-hidden"));
+
+  // Lightbox for the "Or just watch" / "A proper analysis board"
+  // screenshots: click one and it grows from right where it was sitting
+  // into a big centered view (with the page dimming behind it); click
+  // outside it, press Esc, or click the image itself to shrink it back
+  // to that same spot. The grow/shrink motion is a classic FLIP: measure
+  // where the image starts and where it ends up, jump it instantly to
+  // look like the start, then transition to the real end state (or the
+  // reverse, on the way out).
+  const lightbox = document.getElementById("lightbox");
+  const lightboxImg = document.getElementById("lightbox-img");
+  let activeThumb = null;
+
+  function transformFromTo(fromRect, toRect) {
+    const scaleX = fromRect.width / toRect.width;
+    const scaleY = fromRect.height / toRect.height;
+    const dx = (fromRect.left + fromRect.width / 2) - (toRect.left + toRect.width / 2);
+    const dy = (fromRect.top + fromRect.height / 2) - (toRect.top + toRect.height / 2);
+    return `translate(${dx}px, ${dy}px) scale(${scaleX}, ${scaleY})`;
+  }
+
+  function openLightbox(thumb) {
+    activeThumb = thumb;
+    lightboxImg.src = thumb.src;
+    lightboxImg.alt = thumb.alt;
+    lightboxImg.classList.remove("is-animating");
+    lightboxImg.style.transform = "none";
+    lightbox.classList.add("is-open");
+    document.body.classList.add("lightbox-locked");
+
+    const thumbRect = thumb.getBoundingClientRect();
+    // Let the browser lay the image out at its final (big) size first,
+    // then work out the transform that makes it LOOK like it's still
+    // sitting at the thumbnail's spot and size.
+    requestAnimationFrame(() => {
+      const finalRect = lightboxImg.getBoundingClientRect();
+      lightboxImg.style.transform = transformFromTo(thumbRect, finalRect);
+      requestAnimationFrame(() => {
+        lightboxImg.classList.add("is-animating");
+        lightboxImg.style.transform = "none";
+      });
+    });
+  }
+
+  function closeLightbox() {
+    if (!lightbox.classList.contains("is-open")) return;
+    const thumb = activeThumb;
+    if (thumb) {
+      const thumbRect = thumb.getBoundingClientRect();
+      const finalRect = lightboxImg.getBoundingClientRect();
+      lightboxImg.classList.add("is-animating");
+      lightboxImg.style.transform = transformFromTo(thumbRect, finalRect);
+    } else {
+      lightboxImg.classList.remove("is-animating");
+    }
+    lightbox.classList.remove("is-open");
+    document.body.classList.remove("lightbox-locked");
+    activeThumb = null;
+  }
+
+  document.querySelectorAll(".zoomable").forEach(img => {
+    img.addEventListener("click", () => openLightbox(img));
+    img.addEventListener("keydown", e => {
+      if (e.key === "Enter" || e.key === " ") {
+        e.preventDefault();
+        openLightbox(img);
+      }
+    });
+  });
+
+  // Click anywhere that isn't the enlarged image itself - that's "outside
+  // the tile" - closes it. The image is the only thing inside the
+  // overlay that isn't the dimmed backdrop, so this is just "did the
+  // click land on the picture or not".
+  lightbox.addEventListener("click", e => {
+    if (e.target !== lightboxImg) closeLightbox();
+  });
+  lightboxImg.addEventListener("click", closeLightbox);
+  document.addEventListener("keydown", e => {
+    if (e.key === "Escape") closeLightbox();
+  });
+
+  // "Copy" button next to the Linux command.
+  document.querySelectorAll("[data-copy]").forEach(btn => {
+    btn.addEventListener("click", () => {
+      const text = document.getElementById(btn.dataset.copy).textContent;
+      navigator.clipboard.writeText(text).then(() => {
+        btn.textContent = "Copied";
+        setTimeout(() => btn.textContent = "Copy", 1600);
+      }).catch(() => {});
+    });
+  });
+
+  // Smooth open/close animation for the FAQ dropdowns, instead of the
+  // instant snap <details> does by default. Falls back to the normal
+  // instant toggle if the browser doesn't support element.animate, and
+  // skips the animation entirely if the visitor asked for less motion.
+  //
+  // The content paragraph is forced visible at all times (see the
+  // ".faq details > p" CSS rule) and the real open/closed look comes
+  // entirely from clipping `details` to a JS-controlled height. That
+  // way the state we animate from/to never depends on the browser's
+  // own timing for the native `open` attribute, which is what caused
+  // fast clicks to make two panels' content overlap: a new animation
+  // used to start from a stale height instead of wherever the box
+  // actually was on screen at that instant.
+  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if (!reduceMotion && typeof Element.prototype.animate === "function") {
+    document.querySelectorAll(".faq details").forEach(details => {
+      const summary = details.querySelector("summary");
+      let anim = null;
+      let isOpen = false;
+
+      // The collapsed height needs the details box's own top+bottom
+      // padding added on top of the summary's height, not just the
+      // summary alone - otherwise the clipped box is shorter than the
+      // padding box and the question text gets cut off against the
+      // top border instead of sitting centered in it.
+      const getClosedHeight = () => {
+        const cs = getComputedStyle(details);
+        return summary.offsetHeight + parseFloat(cs.paddingTop) + parseFloat(cs.paddingBottom);
+      };
+
+      // Start clipped to just the question row.
+      details.style.overflow = "hidden";
+      details.style.height = getClosedHeight() + "px";
+
+      // Listen on the whole box, not just the question row, so the
+      // entire bordered rectangle is one clickable hitbox - including
+      // its padding - not just the text/icon strip inside it.
+      details.addEventListener("click", e => {
+        // Let a real link inside the answer (e.g. the privacy page
+        // link) work normally instead of toggling the box closed.
+        if (e.target.closest("a")) return;
+        e.preventDefault();
+
+        // Read the box's actual current height before touching anything
+        // else, so a new animation always continues from where this one
+        // visually is right now, even if it's mid-animation.
+        const startHeight = details.getBoundingClientRect().height + "px";
+        if (anim) anim.cancel();
+
+        isOpen = !isOpen;
+        details.open = isOpen;
+
+        const closedHeight = getClosedHeight() + "px";
+        const endHeight = isOpen ? details.scrollHeight + "px" : closedHeight;
+
+        details.style.height = startHeight;
+        anim = details.animate(
+          { height: [startHeight, endHeight] },
+          {
+            duration: isOpen ? 260 : 220,
+            easing: isOpen ? "cubic-bezier(.2,.8,.3,1)" : "cubic-bezier(.4,0,.6,1)"
+          }
+        );
+        anim.onfinish = () => {
+          anim = null;
+          details.style.height = isOpen ? "" : closedHeight;
+        };
+        anim.oncancel = () => { anim = null; };
+      });
+    });
+  }
+
+  // ---------- friends list: a little life, not a real presence feed ----------
+  (function () {
+    const dots = document.querySelectorAll("#friendList .dot");
+    if (!dots.length) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    const states = ["online", "away", "offline"];
+    setInterval(() => {
+      const dot = dots[Math.floor(Math.random() * dots.length)];
+      const current = dot.getAttribute("data-state");
+      const next = states.filter(s => s !== current)[Math.floor(Math.random() * 2)];
+      dot.setAttribute("data-state", next);
+    }, 2600);
+  })();
+
+  // ---------- join code: a quick scramble so it reads as "live", not static art ----------
+  (function () {
+    const el = document.getElementById("codeReel");
+    if (!el) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    const real = el.textContent;
+    const chars = "ABCDEFGHJKLMNPQRSTUVWXYZ23456789";
+    function scrambleOnce() {
+      let frame = 0;
+      const frames = 10;
+      const tick = setInterval(() => {
+        frame++;
+        if (frame >= frames) {
+          clearInterval(tick);
+          el.textContent = real;
+          return;
+        }
+        el.textContent = real
+          .split("")
+          .map((ch, i) => (i < frame * (real.length / frames) ? ch : chars[Math.floor(Math.random() * chars.length)]))
+          .join("");
+      }, 45);
+    }
+    scrambleOnce();
+    setInterval(scrambleOnce, 7000);
+  })();
+
+})();
+</script>
+</body>
+</html>

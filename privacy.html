@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Privacy – Scaccomatto</title>
+<link rel="icon" href="img/icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<nav class="topbar">
+  <a class="brand" href="index.html"><img src="img/icon.png" alt="" width="36" height="36">Scaccomatto</a>
+  <span class="topbar-links">
+    <a href="index.html">Download</a>
+    <a href="credits.html">Credits</a>
+  </span>
+</nav>
+
+<main class="page">
+  <h1 class="outlined">Privacy</h1>
+  <p class="updated">Last updated November 2026. This covers Scaccomatto 1.1.0.</p>
+
+  <p class="short">The short version: playing against the bots, practising, and the analysis board all stay entirely on your computer. Scaccomatto only talks to the internet when you play someone online, or when you choose to sign in - and signing in is optional.</p>
+
+  <h2>What the game keeps on your computer</h2>
+  <ul>
+    <li>Your settings, saved games and Game Review history.</li>
+    <li>Any player names and pictures you add. These live in a folder called <code>.scaccomatto</code> in your home folder.</li>
+    <li>Problem reports, if something goes wrong. They're saved in <code>.scaccomatto/logs</code> and never leave your computer unless you decide to send one to us.</li>
+  </ul>
+
+  <h2>Playing online</h2>
+  <p>Sending a join code, matchmaking, and seeing who's online all need an internet connection, whether or not you're signed in. To make that work, the game shares your moves and a display name with the person you're playing, the same way any online game would. You don't need an account for any of this - sign in only if you want your profile to follow you elsewhere.</p>
+
+  <h2>If you sign in</h2>
+  <p>Signing in is optional, and it's handled by Firebase (Google's sign-in service) - either with an email and password, or with your Google account. Once you're signed in:</p>
+  <ul>
+    <li>We keep your username, display name, rating, and win/loss/draw record, so other players can see who they're up against.</li>
+    <li>A small profile picture, if you add one.</li>
+    <li>Your achievement progress and settings, so they follow you to another computer.</li>
+  </ul>
+  <p>None of that is sold or shared with anyone else, and it's only ever used to run the game's own features.</p>
+
+  <h2>What we don't do</h2>
+  <ul>
+    <li>There are no ads, no analytics and no tracking.</li>
+    <li>We never see your password - Firebase and Google handle sign-in directly.</li>
+    <li>Nothing about you is sold, and nothing is shared beyond what's needed to show you to the people you're playing.</li>
+  </ul>
+
+  <h2>This website</h2>
+  <p>This site is hosted on GitHub Pages. When you visit, GitHub may log your IP address for security, as its own privacy statement explains. The fonts come from Google Fonts, and the version number shown on this page comes from asking GitHub which release is newest, so both of them see your IP address the way any website you visit does. The site itself doesn't store anything about you.</p>
+
+  <h2>Removing everything</h2>
+  <p>Uninstall Scaccomatto, then delete the <code>.scaccomatto</code> folder in your home folder - that clears everything kept on your computer. If you'd signed in, write to us below and we'll delete your account too.</p>
+
+  <h2>Questions</h2>
+  <p>Write to <a href="mailto:alekhinestudios@gmail.com">alekhinestudios@gmail.com</a>.</p>
+</main>
+
+<footer class="site-footer">
+  <p class="footer-links"><a href="index.html">Download</a><a href="credits.html">Credits</a></p>
+  <p class="copy-line">© 2026 Alekhine Studios</p>
+</footer>
+</body>
+</html>
